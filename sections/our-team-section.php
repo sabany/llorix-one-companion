@@ -62,6 +62,7 @@ if(!$section_is_empty) { ?>
                             $title = !empty($llorix_one_lite_team_member->title) ? apply_filters('llorix_one_lite_translate_single_string', $llorix_one_lite_team_member->title, 'Team section') : '';
                             $subtitle = !empty($llorix_one_lite_team_member->subtitle) ? apply_filters('llorix_one_lite_translate_single_string', $llorix_one_lite_team_member->subtitle, 'Team section') : '';
                             $image = !empty($llorix_one_lite_team_member->image_url) ? apply_filters('llorix_one_lite_translate_single_string', $llorix_one_lite_team_member->image_url, 'Team section') : '';
+                            $link = !empty($llorix_one_lite_team_member->link) ? apply_filters('llorix_one_lite_translate_single_string', $llorix_one_lite_team_member->link, 'Team section') : '';
                             $section_is_empty = empty($image) && empty($title) && empty($subtitle);
                             if (!$section_is_empty) { ?>
                                 <div class="col-md-3 team-member-box">
@@ -84,14 +85,28 @@ if(!$section_is_empty) { ?>
                                             <div class="member-details">
                                                 <div class="member-details-inner">
                                                     <?php
-                                                    if (!empty($title)) { ?>
-                                                        <h5 class="colored-text"> <?php echo wp_kses_post($title); ?></h5>
-                                                        <?php
+                                                    if (!empty($title)) {
+                                                        if (!empty($link)) { ?>
+                                                            <a href="<?php echo esc_url($link); ?>">
+                                                                <h5><?php echo wp_kses_post($title); ?></h5>
+                                                            </a>
+                                                            <?php
+                                                        } else { ?>
+                                                            <h5><?php echo wp_kses_post($title); ?></h5>
+                                                            <?php
+                                                        }
                                                     }
-
-                                                    if (!empty($subtitle)) { ?>
-                                                        <div class="small-text"><?php echo wp_kses_post($subtitle); ?></div>
-                                                        <?php
+                                                        
+                                                    if (!empty($subtitle)) {
+                                                        if (!empty($link)) { ?>
+                                                            <a href="<?php echo esc_url($link); ?>">
+                                                                <div class="small-text"><?php echo wp_kses_post($subtitle); ?></div>
+                                                            </a>
+                                                            <?php
+                                                        } else { ?>
+                                                            <div class="small-text"><?php echo wp_kses_post($subtitle); ?></div>
+                                                            <?php
+                                                        }
                                                     } ?>
                                                 </div><!-- .member-details-inner -->
                                             </div><!-- .member-details -->

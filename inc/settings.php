@@ -136,7 +136,8 @@ function llorix_one_companion_customize_register( $wp_customize ) {
 			'priority' => 40,
 			'llorix_one_lite_image_control' => true,
 			'llorix_one_lite_title_control' => true,
-			'llorix_one_lite_subtitle_control' => true
+			'llorix_one_lite_subtitle_control' => true,
+			'llorix_one_lite_link_control' => true
 		) ) );
 		
 		/********************************************************/
